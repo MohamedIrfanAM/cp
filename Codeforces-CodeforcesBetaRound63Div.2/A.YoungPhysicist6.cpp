@@ -10,29 +10,32 @@ using namespace std;
 int main()
 {
 int num;
-int a,b,c;
-int x = 0;
-int y = 0;
-int z = 0;
+int x,y,z = 0;
 
 scanf("%d",&num);
 int vect[num][3];
 
 for(int i = 0; i < num ; i++)
 {
-  scanf("%d %d %d",&a,&b,&c);
-  x += a;
-  y += b;
-  z += c;
+  for(int j = 0; j < 3; j++)
+  {
+    scanf("%d",&vect[i][j]);
+  }
+  x += vect[i][0];
+  y += vect[i][1];
+  z += vect[i][2];
 }
+int result = x + y + z;
 
-if(x==0&&y==0&&z==0)
+if(result == 0)
 {
-    printf("YES\n");
+  /* cout << "YES\n"; */
+  printf("YES\n");
 }
 else
 {
-    printf("NO\n");
+  /* cout << "NO\n"; */
+  printf("NO\n");
 }
 
 return 0;

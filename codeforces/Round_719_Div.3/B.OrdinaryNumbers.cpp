@@ -17,23 +17,28 @@ while(t--)
 {
   long long n;
   cin >> n;
-  long c = 0;
-  for(int i = 1; i <= n; i++)
+  int c = 0;
+  for(int i = 0; i <= 8; i++)
   {
-    int num = 1;
-   if( i >= 11)
-   {
-     
-   }
-   else if( i < 10 )
-   {
-     c++;
-   }
+    int num = 0;
+    for(int k = 0; k <= i; k++)
+    {
+      num += pow(10,k);
+    }
+    for(int j = 1; j <= 9; j++ )
+    {
+      if(num*j <= n)
+      {
+        c++;
+      }
+      else if( num*j > n )
+      {
+        break;
+      }
+    }
   }
-
   cout << c << "\n";
 }
-
 
 return 0;
 }

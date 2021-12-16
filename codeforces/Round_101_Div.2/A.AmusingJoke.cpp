@@ -24,5 +24,6 @@ cin.tie(0);
    {
        cout<<"NO";
    }
-return 0;
+   return 0;
+   
 }

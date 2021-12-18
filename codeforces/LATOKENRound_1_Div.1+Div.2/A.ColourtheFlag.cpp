@@ -75,6 +75,10 @@ while(tst--)
       }
     }
   }
+  else
+  {
+    getout = true;
+  }
 
   if(getout)
   {
@@ -120,6 +124,10 @@ while(tst--)
           break;
         }
       }
+    }
+    else
+    {
+      no = true;
     }
     if(!no)
     {

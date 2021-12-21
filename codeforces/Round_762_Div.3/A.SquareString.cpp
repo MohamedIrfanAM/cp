@@ -43,8 +43,8 @@ while(tst--)
   {
     cout << "NO\n";
   }
-
-  /* cout << s1 << " " << s2; */
+  
+  // could have used substring
 
 }
 

@@ -1,17 +1,36 @@
 // time-limit: 2000
 // problem-url: https://codeforces.com/contest/1615/problem/B
-#include <algorithm>
 #include<bits/stdc++.h>
-#define cout_red cout << "\033[48;5;196m\033[38;5;15m" 
-#define endl_red "\033[0m" << endl; 
 using namespace std;
-
 
 int main()
 {
 ios::sync_with_stdio(0);
 cin.tie(0);
 cout.tie(0);
+
+
+int size = 200001;
+int hsh[19][200001] = {0};
+
+
+
+for(int i = 0; i < 19 ; i++)
+{
+  int num = 1<<i;
+  for(int j = 1; j < size; j++)
+  {
+    if(num&j )
+    {
+      hsh[i][j] = hsh[i][j-1] + 1;
+    }
+    else if((num&j) == 0)
+    {
+      hsh[i][j] = (hsh[i][j-1]);
+    }
+  }
+}
+
 
 int tst;
 cin >> tst;
@@ -20,29 +39,18 @@ while(tst--)
   int l,r;
   cin >> l >> r;
 
-  vector<int> count;
+  int ans = -1;
 
-  int last = l;
-  for(int i = 0; i < 30;i++)
+  for(int i = 0; i < 19; i++)
   {
-    int num = 1<<i;
-    if(num < l)
+    int cnt = hsh[i][r] - hsh[i][l-1];
+    if(cnt > ans)
     {
-      continue;
-    }
-    else if( num >= l && num <= r)
-    {
-      count.push_back(num-last);
-      last = num;
-    }
-    else if( num > r)
-    {
-      count.push_back(r-last);
-      break;
+      ans = cnt;
     }
   }
-  cout << (r-l+1) - *max_element(count.begin(),count.end()) << "\n";
-    cout_red << "Hai" << endl_red;
+  cout << (r-l+1) - ans << "\n";
+
 }
 
 

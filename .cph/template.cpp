@@ -1,6 +1,5 @@
 #include<bits/stdc++.h>
-#define cout_red cout << "\033[48;5;196m\033[38;5;15m" 
-#define endl_red "\033[0m" << endl; 
+
 using namespace std;
 
 

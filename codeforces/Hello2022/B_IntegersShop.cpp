@@ -30,7 +30,7 @@ while(tst--)
   int min_element = INT_MAX;
 
   int minmoney,maxmoney,money;
-  set<vector<int>> s;
+  vector<int> ans = {INT_MAX,-1*INT_MAX,INT_MAX};
   for(int i = 0; i < n; i++) 
   {
     if(arr[i][0] < min_element)
@@ -58,9 +58,10 @@ while(tst--)
     {
       money = min(money,arr[i][2]);
     }
-    
-    s.insert({min_element,-1*max_element,money});
-    cout << (*s.begin())[2] << "\n";
+
+    vector<int> current = {min_element,-1*max_element,money};
+    ans = min(ans,current);
+    cout << ans[2] << "\n";
   }
 
 }

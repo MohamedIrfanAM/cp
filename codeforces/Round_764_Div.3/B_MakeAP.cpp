@@ -19,15 +19,15 @@ while(tst--)
   cin >> a >> b >> c;
 
   int a1 = a;
-  if(((2*b)-c)%a == 0 && ((2*b - c)) > 0 && b - ((2*b - c)) == c - b  )
+  if(((2*b)-c)%a == 0 && ((2*b - c)) > 0 )
   {
     cout << "YES\n" ;
   }
-  else if(((2*b)-a)%c == 0 && ((2*b)-a) > 0 && b - a ==((2*b)-a) -b )
+  else if(((2*b)-a)%c == 0 && ((2*b)-a) > 0 )
   {
     cout << "YES\n";
   }
-  else if( ((a + c)/2 ) %b == 0 && a + c > 0 && ((a+c)/2) - a == c - ((a+c)/2))
+  else if( ((a + c)/2 ) %b == 0 && a + c > 0 && (a+c)%2 == 0) 
   {
     cout << "YES\n";
   }

@@ -3,9 +3,6 @@
 using namespace std;
 
 
-void solve(){
-}
-
 int main()
 {
 ios::sync_with_stdio(0);
@@ -14,8 +11,9 @@ cout.tie(0);
 
 int tst;
 cin >> tst;
-while(tst--){
-  solve(); 
+while(tst--)
+{
+     
 }
 
 return 0;

@@ -9,9 +9,9 @@ bold=$(tput bold);
 reset=$(tput sgr0);
 
 # You can chamge the version of C++ or add the compiler flags you wish
-g++ -std=c++17 $3 -o generator || { echo ${bold}${orange}Compilation Error in ${reset} $3; exit 1; }
-g++ -std=c++17 $1 -o original || { echo ${bold}${orange}Compilation Error${reset} in $1; exit 1; }
-g++ -std=c++17 $2 -o brute || { echo ${bold}${orange}Compilation Error${reset} in $2; exit 1; }
+g++ -std=gnu++17 $3 -o generator || { echo ${bold}${orange}Compilation Error in ${reset} $3; exit 1; }
+g++ -std=gnu++17 $1 -o original || { echo ${bold}${orange}Compilation Error${reset} in $1; exit 1; }
+g++ -std=gnu++17 $2 -o brute || { echo ${bold}${orange}Compilation Error${reset} in $2; exit 1; }
 
 if [ $# -eq 2 ]
     then

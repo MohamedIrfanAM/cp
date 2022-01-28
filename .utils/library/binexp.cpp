@@ -1,0 +1,16 @@
+int binexp(long long int a , long long int b)
+{
+  int ans = 1;
+  long long int M = 1000000007;
+
+  while(b > 0)
+  {
+    if(1&b)
+    {
+      ans = (ans*a)%M;
+    }
+    a = (a*a)%M;
+    b >>= 1;
+  }
+  return ans;
+}

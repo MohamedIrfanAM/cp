@@ -1,6 +1,6 @@
 #! /bin/zsh
 # Codeforces
-CP_PATH="/run/media/irfan/cp"
+CP_PATH="/home/irfan/cp"
 solutions=$(find $CP_PATH/Codeforces*/*cpp)
 if [ $? -eq 0 ]; then
   while IFS= read -r solution; do
@@ -31,4 +31,4 @@ rm -fr $CP_PATH/CSES-CSESProblemSet
 
 # Removing all executables
 rm -fr $CP_PATH/*.exe
-clear
+# clear

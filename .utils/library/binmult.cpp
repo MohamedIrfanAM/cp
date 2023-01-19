@@ -1,7 +1,7 @@
-int binmult(long long int a , long long int b)
+int binmult(int a , int b)
 {
   int ans = 0;
-  long long int M = 1000000007;
+  int M = 1000000007;
 
   while(b > 0)
   {

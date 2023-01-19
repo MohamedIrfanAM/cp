@@ -1,7 +1,7 @@
-int binexp(long long int a , long long int b)
+int binexp(int a , int b)
 {
   int ans = 1;
-  long long int M = 1000000007;
+  int M = 1000000007;
 
   while(b > 0)
   {

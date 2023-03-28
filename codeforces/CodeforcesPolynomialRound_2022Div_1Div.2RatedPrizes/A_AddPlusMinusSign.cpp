@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1774/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,7 +33,31 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  
+  int n;
+  cin >> n;
+  string s;
+  cin >> s;
+  char next = '-';
+  for(int i = 1; i < n ;i++)
+  {
+    if(s[i] == '1')
+    {
+      cout << next;
+      if(next == '-')
+      {
+        next = '+';
+      }
+      else
+      {
+        next = '-';
+      }
+    }
+    else
+    {
+      cout << "+";
+    }
+  }
+  cout << "\n";
 }
 
 return 0;

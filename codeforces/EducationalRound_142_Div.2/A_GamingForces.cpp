@@ -1,3 +1,5 @@
+// time-limit: 2000
+// problem-url: https://codeforces.com/contest/1792/problem/0
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,7 +33,28 @@ int tst;
 cin >> tst;
 while(tst--)
 {
+  int n;
+  cin >> n;
+  int count = 0;
+  vector<int> v(n);
   
+
+  for(int i =0; i < n; i++)
+  {
+    cin >> v[i];
+    if(v[i] == 1) 
+    {
+      count++;
+    }
+  }
+    
+
+  int ans = n -  count;
+  ans += count/2;
+  ans += count%2;
+
+  
+  cout << min(ans,n) << "\n";
 }
 
 return 0;

@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1790/problem/B
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,7 +33,49 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  
+  int n,s,r;
+  cin >> n >> s >> r;
+
+  int max = s-r;
+  cout << max << " "; 
+  n -= 1;
+
+  vector<int> ans;
+  for(int i = max; i >= 1; i--)
+  {
+    if(i <= r)
+    {
+      int count = r/i;
+      for(int j = 0; j < count; j++)
+      {
+        ans.push_back(i);
+      }
+      r %= i;
+    }
+  }
+
+  int done = ans.size();
+  while(ans.size() < n)
+  {
+    for(int i = 0; i < done; i++)
+    {
+      if(ans[i] > 1)
+      {
+        ans[i]--;
+        ans.push_back(1);
+      }
+      if(ans.size() == n)
+      {
+        break;
+      }
+    }
+  }
+
+  for(auto a : ans )
+  {
+    cout << a << " ";
+  }
+  cout << endl;
 }
 
 return 0;

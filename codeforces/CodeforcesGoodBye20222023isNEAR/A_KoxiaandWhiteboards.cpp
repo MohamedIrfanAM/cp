@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1770/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,7 +33,26 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  
+  int n,m;
+  cin >> n >> m;
+  vector<int> a(n+m);
+
+  for(int i = 0; i < n+m; i++)
+  {
+    cin >> a[i];
+  }
+
+
+  sort(a.begin(),a.end()-1);
+  reverse(all(a));
+
+  int sum = 0;
+  for(int i = 0; i < n; i++)
+  {
+    sum += a[i];
+  }
+  cout << sum << "\n";
+
 }
 
 return 0;

@@ -1,3 +1,5 @@
+// time-limit: 3000
+// problem-url: https://codeforces.com/contest/1783/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,7 +33,51 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  
+  int n; 
+  cin >> n;
+  vector<int> v(n);
+  int count = 0;
+  for(int i = 0; i < n; i++)
+  {
+    cin >> v[i];
+  }
+
+
+  for(auto a: v)
+  {
+    if(a == v[0])
+    {
+      count++;
+    }
+  }
+  if(count == n)
+  {
+    cout << "NO\n";
+    continue;
+  }
+
+  sort(all(v));
+  reverse(all(v));
+
+  if(v[0] == v[1])
+  {
+    for(int i = 2; i < n; i++)
+    {
+      if(v[i] != v[0]) 
+      {
+        swap(v[i],v[1]);
+      }
+    }
+  }
+
+  cout<< "YES\n";
+
+  for(auto a: v)
+  {
+    cout << a << " ";
+  }
+  cout << "\n";
+
 }
 
 return 0;

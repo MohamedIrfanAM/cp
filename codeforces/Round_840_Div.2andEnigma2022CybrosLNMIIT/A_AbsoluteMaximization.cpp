@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1763/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,6 +33,24 @@ int tst;
 cin >> tst;
 while(tst--)
 {
+  int n;
+  cin >> n;
+  vector<int> v(n);
+  for(int i = 0; i < n; i++)
+  {
+    cin >> v[i];
+  }
+  int max = v[0];
+  int min = v[0];
+
+  for(auto a:v)
+  {
+    max = max|a;
+    min = min&a;
+  }
+  cout << max - min << "\n";
+
+
   
 }
 

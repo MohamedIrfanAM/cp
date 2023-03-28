@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1777/problem/B
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -6,7 +8,7 @@ using namespace std;
 #define double         long double
 #define pb             push_back
 #define endl           "\n"
-#define mod            1e9+7
+#define sz(x)          ((int) x.size())
 #define all(p)         p.begin(), p.end()
 
 #ifdef IRFAN_DEBUG
@@ -19,20 +21,35 @@ void __f (const char* names, Arg1&& arg1, Args&&... args){
   cout << "\033[48;5;196m\033[38;5;15m";cout.write (names, comma - names) << " : " << arg1 << " | " << "\033[0m"; __f (comma + 1, args...);
 }
 #else
-#define bug(...)
 #endif
-
+#define bug(...)
 
 int32_t main()
 {
 ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 
+  const int N = 1e5 + 5;
+  const int mod = 1e9 + 7;
+  vector<int> fact(N);
+  fact[0] = 1;
+  for(int i = 1; i < N; i++)
+  {
+      fact[i] = fact[i - 1] * i;
+      fact[i] %= mod;
+  }
+
 int tst;
 cin >> tst;
 while(tst--)
 {
-  
+    int n;
+    cin >> n;
+    int ans = n*(n-1);
+    ans %= mod;
+    ans *= fact[n];
+    ans %= mod;
+    cout << ans << "\n";
 }
-
 return 0;
 }
+

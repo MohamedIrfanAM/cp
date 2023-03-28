@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1768/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,7 +33,9 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  
+  int k;
+  cin >> k;
+  cout << k-1 << "\n";
 }
 
 return 0;

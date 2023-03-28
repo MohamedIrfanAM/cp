@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1790/problem/0
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -32,6 +34,23 @@ cin >> tst;
 while(tst--)
 {
   
+  string pi = "314159265358979323846264338327950";
+
+  string s;
+  cin >> s;
+  int count = 0;
+  for(int i =0; i < s.size(); i++)
+  {
+    if(s[i] == pi[i])
+    {
+      count++;
+    }
+    else
+    {
+      break;
+    }
+  }
+  cout << count << "\n";
 }
 
 return 0;

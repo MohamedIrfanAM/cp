@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1779/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,8 +33,51 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  
+  int n;
+  cin >> n;
+  string s;
+  cin >> s;
+
+  bool l_found = false;
+  bool r_found = false;
+  for(int i =0; i < n; i++)
+  {
+    if(!l_found && s[i] == 'R') 
+    {
+      r_found = true;
+    }
+    else if(r_found && s[i] == 'L')
+    {
+      l_found = true;
+    }
+    if(l_found && r_found)
+    {
+      break;
+    }
+  }
+  if(l_found && r_found)
+  {
+    cout << "0\n";
+    continue;
+  }
+
+  bool ans_found = false;
+  for(int i = 0; i+1 < n; i++)
+  {
+    if(s[i] == 'L' && s[i+1] == 'R')
+    {
+      cout << i+1 << "\n";
+      ans_found =true;
+      break;
+    }
+  }
+
+  if(!ans_found)
+  {
+    cout << "-1\n";
+  }
 }
+
 
 return 0;
 }

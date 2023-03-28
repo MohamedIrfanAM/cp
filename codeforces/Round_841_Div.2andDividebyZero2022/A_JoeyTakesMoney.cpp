@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1731/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,7 +33,25 @@ int tst;
 cin >> tst;
 while(tst--)
 {
+  int n;
+  cin >> n;
+  vector<int> v(n);
+  for(int i = 0; i < n; i++)
+  {
+    cin >> v[i];
+  }
   
+  sort(all(v));
+  reverse(all(v));
+  int ans = v[0];
+
+  for(int i = 1; i < n; i++)
+  {
+    ans *= v[i];
+  }
+  ans += n-1;
+  ans *= 2022;
+  cout  << ans << "\n";
 }
 
 return 0;

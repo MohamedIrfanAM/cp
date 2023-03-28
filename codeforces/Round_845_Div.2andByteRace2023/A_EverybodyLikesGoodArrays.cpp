@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1777/problem/0
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -6,7 +8,7 @@ using namespace std;
 #define double         long double
 #define pb             push_back
 #define endl           "\n"
-#define mod            1e9+7
+#define sz(x)          ((int) x.size())
 #define all(p)         p.begin(), p.end()
 
 #ifdef IRFAN_DEBUG
@@ -31,7 +33,20 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  
+  int n;
+  cin >> n;
+  vector<int> v(n);
+  int count = 0;
+  for(int i =0; i <n ; i++)
+  {
+    cin >> v[i];
+    if(i != 0) 
+    {
+      if(v[i-1]%2 == v[i]%2)
+      count++;
+    }
+  }
+  cout << count << "\n";
 }
 
 return 0;

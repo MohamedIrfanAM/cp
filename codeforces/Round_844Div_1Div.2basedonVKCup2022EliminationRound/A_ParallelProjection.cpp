@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1782/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,8 +33,23 @@ int tst;
 cin >> tst;
 while(tst--)
 {
+  int w,d,h,a,b,f,g;
+  cin >> w >> d >> h;
+  cin >> a >> b >> f >> g;
+
+  int ans = h;
   
+  vector<int> v;
+
+  v.push_back((w-a)+(w-f)+abs(b-g));
+  v.push_back(a+f+abs(b-g));
+  v.push_back(g+b+abs(a-f));
+  v.push_back((d-b)+(d-g)+abs(a-f));
+
+  sort(all(v));
+  cout << ans + v[0] << "\n";
 }
+
 
 return 0;
 }

@@ -1,3 +1,5 @@
+// time-limit: 3000
+// problem-url: https://codeforces.com/contest/1790/problem/C
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,7 +33,31 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  
+  int n;
+  cin >> n;
+  vector<vector<int>> v(n);
+
+  for(int i = 0; i < n; i++)
+  {
+    for(int j = 0; j < n-1; j++)
+    {
+      int x;
+      cin >> x;
+      v[i].push_back(x);
+    }
+  }
+
+  map<int,bool> done;
+  for(int i = 0; i < n-1; i++)
+  {
+    map<int,int> M;
+    for(int j = 0; j < n; j++)
+    {
+      M[v[j][i]]++;
+    }
+
+  }
+
 }
 
 return 0;

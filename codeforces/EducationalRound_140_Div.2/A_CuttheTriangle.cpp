@@ -1,3 +1,5 @@
+// time-limit: 2000
+// problem-url: https://codeforces.com/contest/1767/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,7 +33,51 @@ int tst;
 cin >> tst;
 while(tst--)
 {
+  vector<int> v(6);
+  bool negative = false;
+  for(int i = 0; i < 6 ; i++)
+  {
+    cin >> v[i];
+    if(v[i] < 0)
+    {
+      negative = true;
+    }
+  }
+  if(negative)
+  {
+    cout << "NO\n";
+    continue;
+  }
+
+  if(v[0] == v[2])
+  {
+    if(v[1] == v[5] || v[3] == v[5] )
+    {
+      cout << "NO\n";
+      continue;
+    }
+  }
+
+  if(v[0] == v[4])
+  {
+    if(v[1] == v[3] || v[3] == v[5] )
+    {
+      cout << "NO\n";
+      continue;
+    }
+  }
   
+  if(v[4] == v[2])
+  {
+    if(v[1] == v[5] || v[3] == v[1] )
+    {
+      cout << "NO\n";
+      continue;
+    }
+  }
+
+  cout << "YES\n";
+
 }
 
 return 0;

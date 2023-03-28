@@ -1,3 +1,5 @@
+// time-limit: 2000
+// problem-url: https://codeforces.com/contest/1792/problem/B
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -32,6 +34,17 @@ cin >> tst;
 while(tst--)
 {
   
+  int a,b,c,d,p,q;
+  cin >> a >> b >> c >> d;
+
+  int ans = a;
+  p = a;
+  q = a;
+
+
+
+
+
 }
 
 return 0;

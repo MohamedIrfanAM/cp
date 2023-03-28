@@ -1,3 +1,5 @@
+// time-limit: 2000
+// problem-url: https://codeforces.com/problemset/problem/1781/B
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -6,7 +8,7 @@ using namespace std;
 #define double         long double
 #define pb             push_back
 #define endl           "\n"
-#define mod            1e9+7
+#define sz(x)          ((int) x.size())
 #define all(p)         p.begin(), p.end()
 
 #ifdef IRFAN_DEBUG

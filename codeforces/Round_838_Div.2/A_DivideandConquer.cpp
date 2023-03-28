@@ -1,3 +1,5 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1762/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -31,7 +33,31 @@ int tst;
 cin >> tst;
 while(tst--)
 {
+  int n;
+  cin >> n;
+  vector<int> v(n);
+  vector<int> ans(n);
   
+  for(int i = 0; i < n; i++)
+  {
+    cin >> v[i];
+  }
+
+
+  for(int i = 0; i < n; i++)
+  {
+    int k = v[i];
+    int count = 0;
+    while(k%2 == v[i]%2)
+    {
+      count++;
+      k /= 2;
+    }
+    v.push_back(count);
+  }
+
+  sort(all(v));
+  cout << v[0] << "\n";
 }
 
 return 0;

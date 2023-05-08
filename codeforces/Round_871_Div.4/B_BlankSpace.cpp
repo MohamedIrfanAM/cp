@@ -1,5 +1,5 @@
-// time-limit: 2000
-// problem-url: https://codeforces.com/problemset/problem/1804/B
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1829/problem/B
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -33,7 +33,50 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  
+  int n;
+  cin >> n;
+  vector<int> v(n);
+
+  for(auto &a: v)
+  {
+    cin >> a;
+  }
+
+  int max = 0;
+  int count = 0;
+  bool s = false;
+  for(int i = 0 ; i < n ;i++)
+  {
+    if(v[i] == 0)
+    {
+      if(s)
+      {
+        count++;
+      }
+      else
+      {
+        s = true;
+        count++;
+      }
+      if(i == n-1)
+      {
+        if(count > max )
+        {
+          max = count;
+        }
+      }
+    }
+    else
+    {
+      s = false;
+      if(count > max )
+      {
+        max = count;
+      }
+      count = 0;
+    }
+  }
+  cout << max << "\n";
 }
 
 return 0;

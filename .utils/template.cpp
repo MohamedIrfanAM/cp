@@ -31,7 +31,7 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  
+   
 }
 
 return 0;

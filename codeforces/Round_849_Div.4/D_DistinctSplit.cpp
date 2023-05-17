@@ -1,5 +1,5 @@
 // time-limit: 2000
-// problem-url: https://codeforces.com/problemset/problem/1792/B
+// problem-url: https://codeforces.com/problemset/problem/1791/D
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -33,20 +33,31 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  int  a,b,c,d;
-  cin >> a >> b >> c >> d;
-  int ans = 0;
-  ans += a;
-  int k = (a ? min(b,c)*2 : 0);
-  ans += k;
-  b -= k/2;
-  c -=k/2;
-  ans += min((d+c+b),a);
-  if((b+c+d) > a)
+  int n;
+  string s;
+  cin >> n;
+  cin >> s;
+  set<int> s1;
+  set<int> s2;
+  vector<int> a;
+  vector<int> b;
+  for(auto &k : s)
   {
-    ans++;
+    s1.insert(k);
+    a.push_back(s1.size());
   }
-  cout << ans << "\n";
+  for(int i= n-1; i >= 0; i--)
+  {
+    s2.insert(s[i]);
+    b.push_back(s2.size());
+  }
+  int m = -1;
+  for(int i = 0; i+1 < n; i++) 
+  {
+    m = max(m,a[i]+b[n-i-2]);
+  }
+  cout << m << "\n";
+  
 }
 
 return 0;

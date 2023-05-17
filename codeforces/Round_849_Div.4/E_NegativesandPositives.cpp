@@ -1,6 +1,7 @@
 // time-limit: 2000
-// problem-url: https://codeforces.com/problemset/problem/1792/B
+// problem-url: https://codeforces.com/problemset/problem/1791/E
 #include<bits/stdc++.h>
+#include <climits>
 
 using namespace std;
 
@@ -33,20 +34,29 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  int  a,b,c,d;
-  cin >> a >> b >> c >> d;
+  int n;
+  cin >> n;
+  vector<int> v(n);
+  int count = 0;
+  int sum = 0;
+  int m = INT_MAX;
   int ans = 0;
-  ans += a;
-  int k = (a ? min(b,c)*2 : 0);
-  ans += k;
-  b -= k/2;
-  c -=k/2;
-  ans += min((d+c+b),a);
-  if((b+c+d) > a)
+  for(auto &a : v)
   {
-    ans++;
+    cin >> a;
+    if(a < 0) 
+    {
+      a *= -1;
+      count++;
+    }
+    sum += abs(a);
   }
-  cout << ans << "\n";
+  if(count&1)
+  {
+    cout << sum - 2**min_element(all(v)) << "\n";
+  }
+  else
+    cout<< sum <<"\n";
 }
 
 return 0;

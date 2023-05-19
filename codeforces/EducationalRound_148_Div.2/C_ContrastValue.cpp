@@ -1,5 +1,5 @@
-// time-limit: 3000
-// problem-url: https://codeforces.com/problemset/problem/1790/C
+// time-limit: 2000
+// problem-url: https://codeforces.com/problemset/problem/1832/C
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -34,46 +34,41 @@ cin >> tst;
 while(tst--)
 {
   int n;
-  cin >>n;
-  map<int,int> m;
-  vector<vector<int>> v(n);
+  cin >> n;
+  vector<int> v(n);
   for(int i = 0; i < n; i++) 
   {
-    for (int j = 0; j < n-1; j++)
+    cin >> v[i];
+  }
+  if(n == 1)
+  {
+    cout << "1\n";
+    continue;
+  }
+  else if(n == 2)
+  {
+    cout << (v[0] == v[1] ? 1 : 2) <<"\n";
+    continue;
+  }
+
+  int l = 0,count=0;
+  vector<int> v1;
+  v1.push_back(v[0]);
+  for(int i = 1; i < n; i++)
+  {
+    if(v[i] != v[i-1])
+      v1.push_back(v[i]);
+  }
+  for(int i = 1; i+1 < v1.size(); i++)
+  {
+    if(abs(v1[i]-v1[l])+abs(v1[i]-v1[i+1]) == abs(v1[l]-v1[i+1]))
     {
-      int x;
-      cin >>x;
-      m[x] = max(j,m[x]);
-      v[i].push_back(x);
-
-    }
-  }
-  int other;
-  int count = 0;
-  for(int i = 0; i < n; i++)
-  {
-    if(v[i][n-2] == v[0][n-2])
       count++;
+    }
     else
-      other = v[i][n-2];
+      l = i;
   }
-
-  vector<int> ans(n-2);
-  for(auto &p : m)
-  {
-    if(p.second != n-2)
-      ans[p.second]=p.first;
-  }
-  for(auto &a: ans)
-  {
-    cout << a << " ";
-  }
-  if(count == n-1)
-  {
-    cout << other << " " << v[0][n-2] << "\n";
-  }
-  else
-    cout << v[0][n-2] << " " << other << "\n";
+  cout << v1.size()-count << "\n";
 }
 
 return 0;

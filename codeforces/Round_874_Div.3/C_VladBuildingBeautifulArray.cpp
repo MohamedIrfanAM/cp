@@ -1,5 +1,5 @@
-// time-limit: 3000
-// problem-url: https://codeforces.com/problemset/problem/1790/C
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1833/problem/C
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -34,46 +34,47 @@ cin >> tst;
 while(tst--)
 {
   int n;
-  cin >>n;
-  map<int,int> m;
-  vector<vector<int>> v(n);
+  cin>>n;
+  vector<int> v(n);
   for(int i = 0; i < n; i++) 
   {
-    for (int j = 0; j < n-1; j++)
+    cin >> v[i];
+  }
+  sort(all(v));
+  int found = true;
+  int o = 0, e = 0;
+  for(int i = 0; i < n; i++) 
+  {
+    if(v[i]&1)
     {
-      int x;
-      cin >>x;
-      m[x] = max(j,m[x]);
-      v[i].push_back(x);
-
+      if(e == 0)
+      {
+        found = false;
+      }
+      o++;
+    }
+    else
+    {
+      e++;
     }
   }
-  int other;
-  int count = 0;
-  for(int i = 0; i < n; i++)
+
+  for(int i = 0; i < n; i++) 
   {
-    if(v[i][n-2] == v[0][n-2])
-      count++;
+    if(v[i]&1)
+    {
+    }
     else
-      other = v[i][n-2];
+    {
+      if(o == 0)
+      {
+        found = false;
+        break;
+      }
+    }
   }
 
-  vector<int> ans(n-2);
-  for(auto &p : m)
-  {
-    if(p.second != n-2)
-      ans[p.second]=p.first;
-  }
-  for(auto &a: ans)
-  {
-    cout << a << " ";
-  }
-  if(count == n-1)
-  {
-    cout << other << " " << v[0][n-2] << "\n";
-  }
-  else
-    cout << v[0][n-2] << " " << other << "\n";
+  cout << (found ? "NO\n" : "YES\n") ;
 }
 
 return 0;

@@ -1,5 +1,5 @@
 // time-limit: 1000
-// problem-url: https://codeforces.com/problemset/problem/1826/A
+// problem-url: https://codeforces.com/contest/1833/problem/D
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -34,31 +34,70 @@ cin >> tst;
 while(tst--)
 {
   int n;
-  cin >>n;
+  cin>> n;
   vector<int> v(n);
-  for(int i = 0; i < n ; i++)
+  vector<int> ans {-1};
+  for(int i = 0; i < n; i++) 
   {
     cin >> v[i];
   }
-  int ans = -1;
-  for(int i= 0; i < n; i++)
+  if(n == 1)
   {
-    int cnt = 0;
-    for(int j = 0;j < n; j++)
+    cout << v[0] << "\n";
+    continue;
+  }
+  int c = -1;
+  int index = -1;
+  for(int i = 1; i < n; i++)
+  {
+    if(v[i] > c )
     {
-      if(v[j] > i)
-      {
-        cnt++;
-      }
-    }
-    if(cnt == i)
-    {
-      ans = cnt;
-      break;
+      c = v[i];
+      index = i;
     }
   }
-  cout << ans << "\n";
-  
+  for(int i = index; i >= 0; i--)
+  {
+    vector<int> s;
+    for(int j = index+1; j < n; j++)
+    {
+      s.push_back(v[j]);
+    }
+    for(int j = index; j >= i; j--)
+    {
+      s.push_back(v[j]);
+    }
+    for(int j = 0; j < i; j++)
+    {
+      s.push_back(v[j]);
+    }
+    ans = max(s,ans);
+  }
+
+  index--;
+  for(int i = index; i >= 0; i--)
+  {
+    vector<int> s;
+    for(int j = index+1; j < n; j++)
+    {
+      s.push_back(v[j]);
+    }
+    for(int j = index; j >= i; j--)
+    {
+      s.push_back(v[j]);
+    }
+    for(int j = 0; j < i; j++)
+    {
+      s.push_back(v[j]);
+    }
+    ans = max(s,ans);
+  }
+  for(auto &a: ans)
+  {
+    cout << a << " ";
+  }
+  cout << "\n";
+
 }
 
 return 0;

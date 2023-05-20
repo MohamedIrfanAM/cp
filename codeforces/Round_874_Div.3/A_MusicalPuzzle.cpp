@@ -1,5 +1,5 @@
-// time-limit: 2000
-// problem-url: https://codeforces.com/problemset/problem/1832/C
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1833/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -35,40 +35,18 @@ while(tst--)
 {
   int n;
   cin >> n;
-  vector<int> v(n);
-  for(int i = 0; i < n; i++) 
+  string s;
+  cin >> s;
+  set<string> se;
+  for(int i = 0; i+1 < n;i++)
   {
-    cin >> v[i];
+    string k;
+    k.push_back(s[i]);
+    k.push_back(s[i+1]);
+    se.insert(k);
+    k.clear();
   }
-  if(n == 1)
-  {
-    cout << "1\n";
-    continue;
-  }
-  else if(n == 2)
-  {
-    cout << (v[0] == v[1] ? 1 : 2) <<"\n";
-    continue;
-  }
-
-  int l = 0,count=0;
-  vector<int> v1;
-  v1.push_back(v[0]);
-  for(int i = 1; i < n; i++)
-  {
-    if(v[i] != v[i-1])
-      v1.push_back(v[i]);
-  }
-  for(int i = 1; i+1 < v1.size(); i++)
-  {
-    if(abs(v1[i]-v1[l])+abs(v1[i]-v1[i+1]) == abs(v1[l]-v1[i+1]))
-    {
-      count++;
-    }
-    else
-      l = i;
-  }
-  cout << v1.size()-count << "\n";
+  cout<< se.size() << "\n";
 }
 
 return 0;

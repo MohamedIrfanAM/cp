@@ -1,5 +1,5 @@
 // time-limit: 1000
-// problem-url: https://codeforces.com/problemset/problem/1826/A
+// problem-url: https://codeforces.com/problemset/problem/1787/B
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -24,6 +24,28 @@ void __f (const char* names, Arg1&& arg1, Args&&... args){
 #define bug(...)
 #endif
 
+map<int,int> prime_factors( int n )
+{
+  map<int,int> p;
+  int n1 = n;
+  for(int i = 2; i*i <= n1; i++)
+  {
+    while(n%i == 0)
+    {
+      p[i]++;
+      n /= i;
+    }
+    if(n == 1)
+    {
+      break;
+    }
+  }
+  if(n != 1)
+  {
+    p[n]++;
+  }
+  return p;
+}
 
 int32_t main()
 {
@@ -34,31 +56,32 @@ cin >> tst;
 while(tst--)
 {
   int n;
-  cin >>n;
-  vector<int> v(n);
-  for(int i = 0; i < n ; i++)
+  cin >> n;
+  auto p = prime_factors(n);
+  
+  vector<pair<int,int>> v;
+  for(auto a: p)
   {
-    cin >> v[i];
+    v.push_back({a.second,a.first});
   }
-  int ans = -1;
-  for(int i= 0; i < n; i++)
+  sort(all(v));
+  int ans = 0;
+  for(int i = 0; i < v.size(); i++)
   {
-    int cnt = 0;
-    for(int j = 0;j < n; j++)
+    int m = v[i].second;
+    if(v[i].first < 1) continue;
+    for(int j = i+1; j < v.size(); j++)
     {
-      if(v[j] > i)
+      if(v[j].first > 0)
       {
-        cnt++;
+        m *= v[j].second;
+        v[j].first -= v[i].first;
       }
     }
-    if(cnt == i)
-    {
-      ans = cnt;
-      break;
-    }
+    ans += m*v[i].first;
   }
   cout << ans << "\n";
-  
+
 }
 
 return 0;

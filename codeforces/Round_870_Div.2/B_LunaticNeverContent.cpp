@@ -1,5 +1,5 @@
-// time-limit: 1000
-// problem-url: https://codeforces.com/problemset/problem/1826/A
+// time-limit: 2000
+// problem-url: https://codeforces.com/problemset/problem/1826/B
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -34,31 +34,32 @@ cin >> tst;
 while(tst--)
 {
   int n;
-  cin >>n;
-  vector<int> v(n);
-  for(int i = 0; i < n ; i++)
+  cin >> n;
+  vector <int> v(n);
+  for(int i = 0; i < n; i++) 
   {
     cin >> v[i];
   }
-  int ans = -1;
-  for(int i= 0; i < n; i++)
+
+  if (count(all(v),0) == n)
   {
-    int cnt = 0;
-    for(int j = 0;j < n; j++)
+    cout << 0 << "\n";
+    continue;
+  }
+  int gcd = -1;
+  for(int i = 0; i < n/2; i++)
+  {
+    int x = v[n-i-1];
+    if(x == v[i])
+      continue;
+    if(gcd != -1)
+      gcd = __gcd(gcd,(max(x,v[i]))-(min(x,v[i])));
+    else
     {
-      if(v[j] > i)
-      {
-        cnt++;
-      }
-    }
-    if(cnt == i)
-    {
-      ans = cnt;
-      break;
+      gcd = max(v[i],x)-min(v[i],x);
     }
   }
-  cout << ans << "\n";
-  
+  cout << (gcd == -1 ? 0 : gcd) << "\n";
 }
 
 return 0;

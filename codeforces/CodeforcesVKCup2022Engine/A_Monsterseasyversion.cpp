@@ -1,5 +1,5 @@
-// time-limit: 1000
-// problem-url: https://codeforces.com/problemset/problem/1826/A
+// time-limit: 4000
+// problem-url: https://codeforces.com/problemset/problem/1784/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -34,31 +34,26 @@ cin >> tst;
 while(tst--)
 {
   int n;
-  cin >>n;
-  vector<int> v(n);
-  for(int i = 0; i < n ; i++)
+  cin >> n;
+  vector <int> v(n);
+  for(int i = 0; i < n; i++) 
   {
     cin >> v[i];
   }
-  int ans = -1;
-  for(int i= 0; i < n; i++)
+  sort(all(v));
+  int k = 1;
+  int ans = 0;
+  for(int i = 0; i < n; i++) 
   {
-    int cnt = 0;
-    for(int j = 0;j < n; j++)
+    if(v[i] > k)
     {
-      if(v[j] > i)
-      {
-        cnt++;
-      }
+      ans += v[i]-k;
+      k++;
     }
-    if(cnt == i)
-    {
-      ans = cnt;
-      break;
-    }
+    else if(v[i] == k)
+      k++;
   }
   cout << ans << "\n";
-  
 }
 
 return 0;

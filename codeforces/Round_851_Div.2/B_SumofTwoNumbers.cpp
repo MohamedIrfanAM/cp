@@ -1,5 +1,5 @@
 // time-limit: 1000
-// problem-url: https://codeforces.com/problemset/problem/1826/A
+// problem-url: https://codeforces.com/contest/1788/problem/B
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -33,32 +33,41 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  int n;
-  cin >>n;
-  vector<int> v(n);
-  for(int i = 0; i < n ; i++)
+  string n;
+  cin >> n;
+  int c = 0;
+  string x,y;
+  for(auto &a : n)
   {
-    cin >> v[i];
+    int s = a-'0';
+    if(s%2 == 0)
+    {
+      x.push_back(s/2+'0');
+      y.push_back(s/2+'0');
+    }
+    else if(c&1 )
+    {
+      x.push_back((s+1)/2+'0');
+      y.push_back((s)/2+'0');
+      c++;
+    }
+    else
+    {
+      y.push_back((s+1)/2+'0');
+      x.push_back((s)/2+'0');
+      c++;
+    }
   }
-  int ans = -1;
-  for(int i= 0; i < n; i++)
+  while(x[0] == '0' && x.size() > 1) 
   {
-    int cnt = 0;
-    for(int j = 0;j < n; j++)
-    {
-      if(v[j] > i)
-      {
-        cnt++;
-      }
-    }
-    if(cnt == i)
-    {
-      ans = cnt;
-      break;
-    }
+    x.erase(x.begin());
   }
-  cout << ans << "\n";
-  
+
+  while(y[0] == '0' && y.size() > 1) 
+  {
+    y.erase(y.begin());
+  }
+  cout << x << " " << y << "\n";
 }
 
 return 0;

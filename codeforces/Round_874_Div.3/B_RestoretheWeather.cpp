@@ -1,5 +1,5 @@
 // time-limit: 1000
-// problem-url: https://codeforces.com/problemset/problem/1826/A
+// problem-url: https://codeforces.com/contest/1833/problem/B
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -33,32 +33,31 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  int n;
-  cin >>n;
-  vector<int> v(n);
-  for(int i = 0; i < n ; i++)
+  int n,k;
+  cin >> n >> k;
+  vector<pair<int,int>> a(n);
+  vector<int> b(n);
+  for(int i = 0; i < n; i++) 
   {
-    cin >> v[i];
+    cin >> a[i].first;
+    a[i].second = i;
   }
-  int ans = -1;
-  for(int i= 0; i < n; i++)
+  for(int i = 0; i < n; i++) 
   {
-    int cnt = 0;
-    for(int j = 0;j < n; j++)
-    {
-      if(v[j] > i)
-      {
-        cnt++;
-      }
-    }
-    if(cnt == i)
-    {
-      ans = cnt;
-      break;
-    }
+    cin >> b[i];
   }
-  cout << ans << "\n";
-  
+  vector<int> ans(n);
+  sort(all(a));
+  sort(all(b));
+  for(int i = 0; i < n;i++)
+  {
+    ans[a[i].second]=b[i];
+  }
+  for(auto &l : ans)
+  {
+    cout << l << " ";
+  }
+  cout << "\n";
 }
 
 return 0;

@@ -1,5 +1,5 @@
-// time-limit: 2000
-// problem-url: https://codeforces.com/problemset/problem/1781/B
+// time-limit: 1000
+// problem-url: https://codeforces.com/problemset/problem/1780/B
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -33,26 +33,34 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-   int n;
-   cin >> n;
-   vector<int> v(n);
-   for(int i = 0; i < n; i++)
-   {
-     cin >> v[i];
-   }
-   sort(all(v));
-   int ans = 0;
-   for(int i = 0; i < n; i++) 
-   {
-     while((i < n && v[i] > i) || (i+1 < n && v[i+1] <= i+1))
-       i++;
-
-     // cout << v[i] << " ";
-     if(v[i] <= i)
-       ans++;
-   }
-   if(v[0] != 0) ans++;
-   cout << ans <<"\n";
+  int n;
+  cin >> n;
+  vector<int> v(n);
+  for(int i = 0; i < n; i++)
+  {
+    cin >> v[i];
+  }
+  vector<int> a(n);
+  vector<int> b;
+  int sum = 0;
+  for(int i = 0; i < n; i++) 
+  {
+    sum += v[i];
+    a[i]=sum;
+  }
+  sum = 0;
+  for(int i = n-1; i >= 0; i--)
+  {
+    sum += v[i];
+    b.push_back(sum);
+  }
+  int ans =1 ;
+  for(int i = 0; i < n-1; i++)
+  {
+    // cout << a[i] << " " << b[n-i-1] << " ";
+    ans = max(ans,__gcd(a[i],b[n-i-2]));
+  }
+  cout << ans << "\n";
 }
 
 return 0;

@@ -2,12 +2,12 @@
 
 using namespace std;
 
-#define int            long long int
-#define double         long double
-#define pb             push_back
-#define endl           "\n"
-#define mod            1e9+7
-#define all(p)         p.begin(), p.end()
+#define int           long long int
+#define double        long double
+#define pb            push_back
+#define endl          "\n"
+#define all(p)        p.begin(), p.end()
+const int mod=1e9+7;
 
 #ifdef IRFAN_DEBUG
 #define bug(...) __f(#__VA_ARGS__, __VA_ARGS__)

@@ -1,10 +1,10 @@
 // time-limit: 2000
-// problem-url: https://codeforces.com/contest/1838/problem/B
+// problem-url: https://codeforces.com/problemset/problem/1721/B
 #include<bits/stdc++.h>
 
 using namespace std;
 
-#define ll            long long int
+#define int           long long int
 #define double        long double
 #define pb            push_back
 #define endl          "\n"
@@ -33,28 +33,14 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  int n;
-  cin >> n;
-  vector<int> v(n);
-  map <int,int> m;
-  for(int i = 0; i < n; i++)
+  int n,m,a,b,d;
+  cin >> n >> m >> a >> b >> d;
+  if(a-1 > d && m-b > d || n-a > d && b-1 > d)
   {
-    cin >> v[i];
-    m[v[i]]=i+1;
+    cout << n+m-2 << "\n";
   }
-  if(m[n] < max(m[1],m[2]) && m[n] > min(m[1],m[2]))
-  {
-    cout << m[1] << " " << m[1] << "\n";
-  }
-  else if(m[n] > m[1] && m[n] > m[2])
-  {
-    cout << m[n] << ' ' << max(m[1],m[2]) << "\n";
-  }
-  else if(m[n] < m[1] && m[n] < m[2])
-  {
-    cout << m[n] << " " << min(m[1],m[2]) << "\n";
-  }
-   
+  else
+    cout << "-1\n";
 }
 
 return 0;

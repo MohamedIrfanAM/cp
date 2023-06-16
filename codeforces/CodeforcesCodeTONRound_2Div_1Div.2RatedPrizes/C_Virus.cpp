@@ -1,5 +1,5 @@
 // time-limit: 1000
-// problem-url: https://codeforces.com/problemset/problem/1712/C
+// problem-url: https://codeforces.com/problemset/problem/1704/C
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -33,27 +33,43 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-  int n;
-  cin >> n;
-  vector<int> v(n);
-  unordered_map <int,int> p;
-  for(int i = 0; i < n; i++)
+  int n,m;
+  cin >> n >> m;
+  vector<int> v(m);
+  for(int i = 0; i < m; i++)
   {
     cin >> v[i];
-    p[v[i]] = i;
   }
-  int l = n-1;
-  while(l > 0 && v[l] >= v[l-1])
+  sort(all(v));
+  vector<int> a;
+  for(int i = 1; i < m; i++) 
   {
-    l--;
+    a.pb(v[i]-v[i-1]-1);
   }
-  set <int> s;
-  for(int i = 0; i < l; i++)
+  a.pb((n-v.back())+v[0]-1);
+  sort(all(a));
+  reverse(all(a));
+  int x = 0;
+  int inf = 0;
+  for(auto &k: a)
   {
-    s.insert(v[i]);
-    l = max(p[v[i]]+1,l);
+    k -= x;
+    // cout << k << " ";
+    if(k <= 0)
+      break;
+    else if(k <= 2)
+    {
+      inf += 1;
+      x += 2;;
+    }
+    else
+    {
+      inf += (k-1);
+      x+=4;
+    }
   }
-  cout << s.size() << "\n";
+  cout << n-inf << "\n";
+  
   
 }
 

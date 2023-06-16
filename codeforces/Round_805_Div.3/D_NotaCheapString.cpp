@@ -1,5 +1,5 @@
-// time-limit: 1000
-// problem-url: https://codeforces.com/problemset/problem/1712/C
+// time-limit: 2000
+// problem-url: https://codeforces.com/contest/1702/problem/D
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -33,27 +33,40 @@ int tst;
 cin >> tst;
 while(tst--)
 {
+  string s;
+  cin >> s;
   int n;
   cin >> n;
-  vector<int> v(n);
-  unordered_map <int,int> p;
-  for(int i = 0; i < n; i++)
+  map<char,int> m;
+  string s2 = s;
+  sort(all(s));
+  reverse(all(s));
+  int sum = 0;
+  for(int i = 0; i < s.size(); i++) 
   {
-    cin >> v[i];
-    p[v[i]] = i;
+    sum += s[i]-'a'+1;
   }
-  int l = n-1;
-  while(l > 0 && v[l] >= v[l-1])
+
+  for(int i = 0; i < s.size(); i++) 
   {
-    l--;
+    if(sum <= n)
+    {
+      break;
+    }
+    else
+    {
+      m[s[i]]++;
+      sum -= s[i]-'a'+1;
+    }
   }
-  set <int> s;
-  for(int i = 0; i < l; i++)
+  for(int i = 0; i < s.size(); i++)
   {
-    s.insert(v[i]);
-    l = max(p[v[i]]+1,l);
+    if(m[s2[i]] <= 0)
+      cout << s2[i];
+    else
+      m[s2[i]]--;
   }
-  cout << s.size() << "\n";
+  cout << endl;
   
 }
 

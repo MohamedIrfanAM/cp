@@ -1,5 +1,5 @@
-// time-limit: 1000
-// problem-url: https://codeforces.com/problemset/problem/1712/C
+// time-limit: 2000
+// problem-url: https://codeforces.com/problemset/problem/1703/D
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -35,26 +35,33 @@ while(tst--)
 {
   int n;
   cin >> n;
-  vector<int> v(n);
-  unordered_map <int,int> p;
-  for(int i = 0; i < n; i++)
+  map<string,int> m;
+  vector<string>v;
+  for(int i = 0; i < n; i++) 
   {
-    cin >> v[i];
-    p[v[i]] = i;
+    string x;
+    cin >> x;
+    v.pb(x);
+    m[x]++;
   }
-  int l = n-1;
-  while(l > 0 && v[l] >= v[l-1])
+  for(int i = 0; i < n ;i++)
   {
-    l--;
+    int x = v[i].size();
+    bool found = false;
+    for(int j = 0; j < x; j++) 
+    {
+      string y = v[i].substr(0,j+1);
+      string b = v[i].substr(j+1);
+      if(m[y] && m[b])
+      {
+        cout << 1;
+        found = true;
+        break;
+      }
+    }
+    if(!found)cout << 0;
   }
-  set <int> s;
-  for(int i = 0; i < l; i++)
-  {
-    s.insert(v[i]);
-    l = max(p[v[i]]+1,l);
-  }
-  cout << s.size() << "\n";
-  
+  cout << endl;
 }
 
 return 0;

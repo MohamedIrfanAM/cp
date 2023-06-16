@@ -1,5 +1,5 @@
 // time-limit: 1000
-// problem-url: https://codeforces.com/problemset/problem/1712/C
+// problem-url: https://codeforces.com/contest/1520/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -35,26 +35,22 @@ while(tst--)
 {
   int n;
   cin >> n;
-  vector<int> v(n);
-  unordered_map <int,int> p;
-  for(int i = 0; i < n; i++)
+  string s;
+  cin >> s;
+  s.resize(unique(s.begin(),s.end())-s.begin());
+  sort(all(s));
+  bool no = false;
+  if(s.size() == 1)
   {
-    cin >> v[i];
-    p[v[i]] = i;
+    cout << "YES\n";
+    continue;
   }
-  int l = n-1;
-  while(l > 0 && v[l] >= v[l-1])
+  for(int i = 1; i < s.size(); i++) 
   {
-    l--;
+    if(s[i]==s[i-1])
+      no = true;
   }
-  set <int> s;
-  for(int i = 0; i < l; i++)
-  {
-    s.insert(v[i]);
-    l = max(p[v[i]]+1,l);
-  }
-  cout << s.size() << "\n";
-  
+  cout << (no?"NO":"YES") << endl;
 }
 
 return 0;

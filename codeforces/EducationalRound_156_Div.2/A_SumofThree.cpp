@@ -1,6 +1,5 @@
-// time-limit: 3000
-// problem-url: https://codeforces.com/problemset/problem/1859/C
-#include <algorithm>
+// time-limit: 2000
+// problem-url: https://codeforces.com/contest/1886/problem/A
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -36,43 +35,29 @@ while(tst--)
 {
   int n;
   cin >> n;
+  
 
-  vector<int> c;
-
-  for(int i = 1; i <= n; i++)
-  {
-    for(int j = 1; j <= n; j++)
-    {
-      set<int> s;
-      for(int k = 1; k <= n; k++) 
-      {
-        if(k != i)
-          s.insert(k);
-      }
-
-      int cost = 0;
-      int m = i*j;
-      for(int k = n; k >= 1; k--)
-      {
-        if(k == j || k > m) continue;
-        auto it = s.find(m/k);
-        if(it == s.end()){
-          it = s.upper_bound(m/k);
-          if(it == s.end())
-            break;
-          it--;
+  bool found = false;
+  int ans = -1;
+  int a,b,c;
+  for(int i = 0; i < min(50ll,n); i++){
+    for(int j = 0; j < min(50ll,n); j++){
+      if(j != i && j%3 && i%3){
+        int x = n-i-j; 
+        if(x %3 && x > 0 && x != i && x != j ){
+          found = true;
+          a = i,b = j, c = x;
         }
-        // cout << m << " " <<   *it << " " << k << "|";
-        cost += (*it)*k;
-        s.erase(*it);
       }
-      // cout << endl;
-      c.pb(cost);
     }
   }
-  // cout << en;dl;
-  cout << *max_element(all(c)) << endl;
-
+  if(found){
+    cout << "YES\n";
+    cout << a  << " " << b << " " << c << endl;
+  }
+  else{
+    cout << "NO\n";
+  }
 }
 
 return 0;

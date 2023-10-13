@@ -30,5 +30,6 @@ vector<int> primes( int n ,int choice=1 )
     case 2: return highest_prime_factor; break;
     case 3: return lowest_prime_factor; break;
     case 4: return is_prime; break;
+    default: return prime_numbers;
   }
 }

@@ -7,6 +7,8 @@ using namespace std;
 #define pb            push_back
 #define endl          "\n"
 #define all(p)        p.begin(), p.end()
+#define fi            first
+#define se            second
 const int mod=1e9+7;
 
 #ifdef IRFAN_DEBUG
@@ -23,6 +25,11 @@ void __f (const char* names, Arg1&& arg1, Args&&... args){
 #endif
 
 
+void solve() 
+{
+  
+}
+
 int32_t main()
 {
 ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
@@ -31,7 +38,7 @@ int tst;
 cin >> tst;
 while(tst--)
 {
-   
+  solve();
 }
 
 return 0;

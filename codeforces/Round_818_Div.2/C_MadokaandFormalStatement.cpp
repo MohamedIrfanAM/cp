@@ -1,5 +1,5 @@
-// time-limit: 2000
-// problem-url: https://codeforces.com/problemset/problem/1733/C
+// time-limit: 1000
+// problem-url: https://codeforces.com/problemset/problem/1717/C
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -9,6 +9,8 @@ using namespace std;
 #define pb            push_back
 #define endl          "\n"
 #define all(p)        p.begin(), p.end()
+#define fi            first
+#define se            second
 const int mod=1e9+7;
 
 #ifdef IRFAN_DEBUG
@@ -25,47 +27,56 @@ void __f (const char* names, Arg1&& arg1, Args&&... args){
 #endif
 
 
+void solve() 
+{
+  int n;
+  cin >> n;
+  vector<int> a(n);
+  for(int i = 0; i < n; i++)
+  {
+    cin >> a[i];
+  }
+  vector<int> b(n);
+  for(int i = 0; i < n; i++)
+  {
+    cin >> b[i];
+  }
+  
+  int m = 0;
+  for(int i = 0; i < n; i++) 
+  {
+    if(a[i] > b[i] || m > b[i]){
+      cout << "NO\n";
+      return;
+    }
+    if(a[i] < b[i]){
+      a[i] = b[i];
+      m = b[i]-1;
+    }
+    else{
+      m = 0;
+      if(i +1 < n){
+        a[i] = b[i]+1;
+      }
+    }
+  }
+  if(m > b[0]){
+    cout << "NO\n";
+  }
+  else{
+    cout << "YES\n";
+  }
+}
+
 int32_t main()
 {
 ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 
-int tst;
+int tst = 1;
 cin >> tst;
 while(tst--)
 {
-  int n;
-  cin >> n;
-  vector<int> v(n);
-  vector<int> o;
-  vector<int> e;
-  for(int i = 0; i < n; i++)
-  {
-    cin >> v[i];
-    if(v[i]&1)o.pb(i+1);
-    else e.pb(i+1);
-  }
-  cout << n-1 << endl;
-  if(v[0]&1){
-    for(int i = 0; i+1 < o.size(); i++)
-    {
-      cout << o[i] << " "  << o.back() << endl;
-    }
-    for(int i = 0; i < e.size(); i++) 
-    {
-      cout << 1 << " " << e[i] << endl;
-    }
-  }
-  else{
-    for(int i = 0; i+1 < e.size(); i++)
-    {
-      cout << e[i] << " "  << e.back() << endl;
-    }
-    for(int i = 0; i < o.size(); i++) 
-    {
-      cout << 1 << " " << o[i] << endl;
-    }
-  }
-  
+  solve();
 }
 
 return 0;

@@ -1,5 +1,5 @@
-// time-limit: 2000
-// problem-url: https://codeforces.com/problemset/problem/1733/C
+// time-limit: 1000
+// problem-url: https://codeforces.com/problemset/problem/451/B
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -9,6 +9,8 @@ using namespace std;
 #define pb            push_back
 #define endl          "\n"
 #define all(p)        p.begin(), p.end()
+#define fi            first
+#define se            second
 const int mod=1e9+7;
 
 #ifdef IRFAN_DEBUG
@@ -25,47 +27,54 @@ void __f (const char* names, Arg1&& arg1, Args&&... args){
 #endif
 
 
-int32_t main()
-{
-ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-
-int tst;
-cin >> tst;
-while(tst--)
+void solve() 
 {
   int n;
   cin >> n;
   vector<int> v(n);
-  vector<int> o;
-  vector<int> e;
   for(int i = 0; i < n; i++)
   {
     cin >> v[i];
-    if(v[i]&1)o.pb(i+1);
-    else e.pb(i+1);
   }
-  cout << n-1 << endl;
-  if(v[0]&1){
-    for(int i = 0; i+1 < o.size(); i++)
-    {
-      cout << o[i] << " "  << o.back() << endl;
+  if(is_sorted(all(v))){
+    cout << "yes\n";
+    cout << "1 1\n";
+    return;
+  }
+  int d = -1;
+  int D = -1;
+  for(int i = 1; i < n; i++){
+    if(v[i] < v[i-1] && d == -1){
+      d = i-1;
     }
-    for(int i = 0; i < e.size(); i++) 
-    {
-      cout << 1 << " " << e[i] << endl;
+    else if((v[i] > v[i-1]) && d != -1 && D == -1){
+      D = i-1;
+      break;
     }
+    if(i == n-1){
+      D = i;
+    }
+  } 
+  if(d != -1 && D != -1){
+    reverse(v.begin()+d, v.begin()+D+1);
+  }
+  if(is_sorted(all(v))){
+    cout << "yes\n";
+    cout << d+1 << " " << D+1 << endl;
   }
   else{
-    for(int i = 0; i+1 < e.size(); i++)
-    {
-      cout << e[i] << " "  << e.back() << endl;
-    }
-    for(int i = 0; i < o.size(); i++) 
-    {
-      cout << 1 << " " << o[i] << endl;
-    }
+    cout << "no\n";
   }
-  
+}
+
+int32_t main()
+{
+ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int tst = 1;
+while(tst--)
+{
+  solve();
 }
 
 return 0;

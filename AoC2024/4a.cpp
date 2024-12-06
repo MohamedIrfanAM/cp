@@ -45,8 +45,10 @@ void solve()
   {
     for (int j = 0; j < v[0].size(); j++)
     {
-      if (v[i][j] != 'M')
+      if (v[i][j] != 'X')
         continue;
+
+      // row and column can have deltas like ( -1,0,1 ), 3*3 possibilities, 0,0 can be discarded so 8 possibilities, use for loop to iterate through
 
       if (j + 3 < n && v[i].substr(j, 4) == "XMAS")
       {

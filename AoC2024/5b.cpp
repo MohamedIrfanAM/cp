@@ -82,6 +82,8 @@ void solve()
       }
     }
 
+    // Bubble sort with custom comparator function
+    // Better approach would be to do topological sorting
     for (int i = 0; i < k.size(); i++)
     {
       for (int j = 0; j < k.size() - i - 1; j++)

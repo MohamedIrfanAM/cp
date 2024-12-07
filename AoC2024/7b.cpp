@@ -26,34 +26,6 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
 #define bug(...)
 #endif
 
-int checkIndex(vector<int> &v, int i, int y, int x)
-{
-
-  if (x == y)
-  {
-    return i;
-  }
-  if (i == v.size())
-  {
-    return -1;
-  }
-
-  int y1 = y * v[i];
-  int y2 = y + v[i];
-
-  int p1 = checkIndex(v, i + 1, y1, x);
-  int p2 = checkIndex(v, i + 1, y2, x);
-
-  if (p1 != -1)
-  {
-    return p1;
-  }
-  else
-  {
-    return p2;
-  }
-};
-
 bool check(vector<int> &v, int i, int y, int x)
 {
   if (i == v.size())
